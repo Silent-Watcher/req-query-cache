@@ -1,4 +1,4 @@
-export { cachedQuery, runWithCache } from "./core";
+export { cachedQuery, runWithCache, closeDefaultAdapter } from "./core";
 export { InMemoryStoreAdapter } from "./inMemoryAdapter";
 export { hashKey } from "./hashKey";
 export { RequestCacheInterceptor } from "./nest";
