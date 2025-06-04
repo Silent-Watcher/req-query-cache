@@ -1,6 +1,6 @@
 {
     "name": "req-query-cache",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Rails-style per-request and optional cross-request query caching for Node.js (Express & NestJS), TypeScript-friendly.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
