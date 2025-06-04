@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { InMemoryStoreAdapter } from '../src/inMemoryAdapter';
 
 let adapter: InMemoryStoreAdapter;
@@ -27,5 +27,29 @@ describe('InMemoryStoreAdapter', () => {
     await adapter.del('key3');
     const val = await adapter.get<string>('key3');
     expect(val).toBeNull();
+  });
+
+  it('should delete and return null for expired entries', async () => {
+	const adapter = new InMemoryStoreAdapter();
+
+	const key = 'test-expired';
+	adapter['store'].set(key, {
+	  data: 'old-data',
+	  expiresAt: Date.now() - 1000, // expired
+	});
+
+	const result = await adapter.get(key);
+	expect(result).toBeNull();
+	expect(adapter['store'].has(key)).toBe(false); // confirm deletion
+  });
+
+  it('should clear cleanup interval on close', () => {
+	const adapter = new InMemoryStoreAdapter();
+
+	const spy = vi.spyOn(global, 'clearInterval');
+	adapter.close();
+
+	expect(spy).toHaveBeenCalledWith(adapter['cleanupInterval']);
+	spy.mockRestore();
   });
 });

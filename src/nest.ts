@@ -4,7 +4,7 @@ import type {
 	NestInterceptor,
 } from "@nestjs/common";
 import { Injectable } from "@nestjs/common";
-import { from, Observable } from "rxjs";
+import { from, lastValueFrom, Observable } from "rxjs";
 import { runWithCache } from "./core";
 
 /**
@@ -13,13 +13,16 @@ import { runWithCache } from "./core";
 @Injectable()
 export class RequestCacheInterceptor implements NestInterceptor {
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-		// Wrap the handling in runWithCache so all cachedQuery calls use the same store
-		return from(
+		// Wrap in runWithCache so all cachedQuery calls see the same store
+		return new Observable((subscriber) => {
 			runWithCache(async () => {
-				// Convert Observable to Promise, then back to Observable
-				const data = await next.handle().toPromise();
-				return data;
-			}),
-		);
+				// Await the handler using lastValueFrom
+				const data = await lastValueFrom(next.handle());
+				subscriber.next(data);
+				subscriber.complete();
+			}).catch((err) => {
+				subscriber.error(err);
+			});
+		});
 	}
 }
