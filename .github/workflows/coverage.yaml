@@ -25,6 +25,9 @@ jobs:
       - name: Run Unit Tests
         run: npm run test
 
+      - name: Create badges directory
+        run: mkdir -p badges
+
       - name: Publish Results Badge
         uses: wjervis7/vitest-badge-action@v1.0.0
         if: success() || failure() # run whether steps succeed or not
