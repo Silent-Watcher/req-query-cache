@@ -32,4 +32,4 @@ jobs:
           result-type: lines
           gist-token: ${{ secrets.GIST_TOKEN }} # if you want to upload badge to gist
           gist-url: https://gist.github.com/Silent-Watcher/77d528f92aa2d0cea91e27470c2553f1
-          upload-badge: ${{ github.base_ref == 'refs/heads/main' }}
+          upload-badge: true
