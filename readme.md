@@ -600,7 +600,6 @@ Please follow the existing style, write TypeScript, and add tests for any new be
 
 ## License
 
-MIT © Your Name or Organization
-(Adapt as needed)
+MIT ©
 
 Enjoy effortless per-request and TTL caching in Node.js! 🚀
