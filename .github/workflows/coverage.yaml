@@ -36,3 +36,11 @@ jobs:
           upload-badge: false
           badge-path: badges/vitest.svg
           badge-neutral-color: 696969
+      - name: Commit Badge to Repository
+        if: success() || failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges/vitest.svg
+          git commit -m "chore: update vitest badge" || echo "No changes to commit"
+          git push
