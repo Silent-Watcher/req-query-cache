@@ -1,6 +1,6 @@
 {
   "name": "req-query-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rails-style per-request and optional cross-request query caching for Node.js (Express & NestJS), TypeScript-friendly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,6 +18,9 @@
   ],
   "author": "Ali nazari backendwithali@gmail.com",
   "license": "MIT",
+  "repository": {
+	"url": "https://github.com/Silent-Watcher/req-query-cache"
+  },
   "type": "module",
   "imports": {
     "#app/*": {
