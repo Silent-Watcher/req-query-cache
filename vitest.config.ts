@@ -1,21 +1,21 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	test: {
-		include: ["tests/**/*.test.ts"],
-		environment: "node",
+		include: ['tests/**/*.test.ts'],
+		environment: 'node',
 		globals: true,
 		coverage: {
-			provider: "v8",
+			provider: 'v8',
 			enabled: true,
-			reporter:  ["lcov"],
+			reporter: ['json-summary'],
 			all: true,
 
-			include: ["src/**/*.ts"],
-			exclude: ["src/index.ts" , "src/types.ts"],
+			include: ['src/**/*.ts'],
+			exclude: ['src/index.ts', 'src/types.ts'],
 		},
 	},
 	resolve: {
-		conditions: ["my-package-dev"],
+		conditions: ['my-package-dev'],
 	},
 });
