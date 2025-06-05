@@ -2,6 +2,11 @@
 
 A lightweight, TypeScript-first package to bring Ruby on Rails–style per-request query caching (plus optional cross-request TTL caching) to Node.js. Ship it as a single module that works out of-the-box with **Express** and **NestJS**, and supports any Promise-based data source (**SQL** or **NoSQL**).
 
+![Vitest Coverage](./badges/vitest.svg)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 ---
 
 ## Table of Contents
