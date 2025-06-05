@@ -30,6 +30,6 @@ jobs:
         if: success() || failure() # run whether steps succeed or not
         with:
           result-type: lines
-          gist-token: ${{ secrets.GIST_TOKEN }} # if you want to upload badge to gist
-          gist-url: https://gist.github.com/Silent-Watcher/77d528f92aa2d0cea91e27470c2553f1
-          upload-badge: true
+          upload-badge: false
+          badge-path: badges/vitest.svg
+          badge-neutral-color: 696969
